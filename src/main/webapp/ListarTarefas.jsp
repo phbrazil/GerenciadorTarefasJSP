@@ -88,7 +88,7 @@
                                     </c:if>
                                     <c:if test = "${tarefa.status != 'Finalizada'}">
                                         <div class='mb-2'>
-                                            <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal${tarefa.id}'>
+                                            <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" data-target = '#modal${tarefa.id}'>
                                                 Editar
                                             </button>
                                         </div>
@@ -108,7 +108,7 @@
             </table>
 
             <c:forEach items="${lista}" var="tarefa">
-                <div  class="modal fade" th:attr="id = 'modal${tarefa.id}' tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                <div  class="modal fade" id = 'modal${tarefa.id}' tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                       aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <!--Content-->
@@ -122,13 +122,13 @@
                             </div>
                             <!--Body-->
                             <div class="modal-body mb-0">
-                                <form action="#" th:action="@{/editTarefa}" th:object="${tarefa}" method="post">
+                                <form action="editTarefa" method="post">
                                     <div class='col-md-12'>
                                         <div class='col-md-5 mb-2'>
-                                            <input name="responsavel" th:value="*{responsavel}" title="Nome do Responsável" type="text" class="form-control" id="responsavel" maxlength ="70" required>
+                                            <input name="responsavel" value="${tarefa.responsavel}" title="Nome do Responsável" type="text" class="form-control" id="responsavel" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <input name="nome" th:value="*{nome}"  title="Nome da Tarefa" type="text" class="form-control" id="artista" placeholder="Nome da Tarefa" value="" maxlength ="70" required>
+                                            <input name="nome"value="${tarefa.nome}"  title="Nome da Tarefa" type="text" class="form-control" id="artista" placeholder="Nome da Tarefa" value="" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
                                             <input name="datainicio"  th:value="*{datainicio}"  title="Inicio Tarefa" type="date" class="form-control" id="datainicio" placeholder="Ano da Tarefa" value="" maxlength ="70" required>
