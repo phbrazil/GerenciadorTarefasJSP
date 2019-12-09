@@ -63,33 +63,43 @@
                             <td>${tarefa.datafim}</td>
                             <td align='center'>
                                 <div class="row">
-                                    <div th:if="${tarefa.status == 'Finalizada'}" class='mb-2'>
-                                        <span th:text="'Tarefa finalizada com nota '+${tarefa.nota}" class='text-muted'></span>
-                                    </div>
-                                    <div th:if="${tarefa.status == 'Não iniciada'}" class='mb-2'>
-                                        <form th:action="@{/iniciarTarefa}"  th:object="${tarefa}" method="post">
-                                            <input type="hidden" name="id" th:value="${tarefa.id}" />
-                                            <input type="submit" value="Iniciar" class="btn btn-success" />
-                                        </form>
-                                    </div>
+                                    <c:if test = "${tarefa.status == 'Finalizada'}">
+                                        <div class='mb-2'>
+                                            <span class='text-muted'>
+                                                Tarefa finalizada com nota ${tarefa.nota}
+                                            </span>
+                                        </div>
+                                    </c:if>
+                                    <c:if test = "${tarefa.status == 'Não iniciada'}">
+                                        <div class='mb-2'>
+                                            <form th:action="@{/iniciarTarefa}"  th:object="${tarefa}" method="post">
+                                                <input type="hidden" name="id" th:value="${tarefa.id}" />
+                                                <input type="submit" value="Iniciar" class="btn btn-success" />
+                                            </form>
+                                        </div>
+                                    </c:if>
                                     <c:if test = "${tarefa.status != 'Finalizada'}">
                                         <div class='mb-2'>
-                                            <form action="/deleteTarefa" method="POST">
+                                            <form action="deleteTarefa" method="POST">
                                                 <input type="hidden" name="id" value="${tarefa.id}" />
                                                 <input onclick="return confirm('Quer mesmo deletar?');" type="submit" value="Delete" class="btn btn-danger" />
                                             </form>
                                         </div>
                                     </c:if>
-                                    <div th:if="${tarefa.status != 'Finalizada'}" class='mb-2'>
-                                        <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal'+${tarefa.id}">
-                                            Editar
-                                        </button>
-                                    </div>
-                                    <div th:if="${tarefa.status != 'Finalizada'}" class='mb-2'>
-                                        <button type="button" class="btn mb-1 btn-success text-white" data-toggle="modal" th:attr="data-target = '#modalConcluir'+${tarefa.id}">
-                                            Concluir
-                                        </button>
-                                    </div>
+                                    <c:if test = "${tarefa.status != 'Finalizada'}">
+                                        <div class='mb-2'>
+                                            <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal'+${tarefa.id}">
+                                                Editar
+                                            </button>
+                                        </div>
+                                    </c:if>
+                                    <c:if test = "${tarefa.status != 'Finalizada'}">
+                                        <div class='mb-2'>
+                                            <button type="button" class="btn mb-1 btn-success text-white" data-toggle="modal" th:attr="data-target = '#modalConcluir'+${tarefa.id}">
+                                                Concluir
+                                            </button>
+                                        </div>
+                                    </c:if>
                                 </div>
                             </td>
                         </tr>
