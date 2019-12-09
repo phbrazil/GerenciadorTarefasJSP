@@ -88,7 +88,7 @@
                                     </c:if>
                                     <c:if test = "${tarefa.status != 'Finalizada'}">
                                         <div class='mb-2'>
-                                            <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal'+${tarefa.id}">
+                                            <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal${tarefa.id}'>
                                                 Editar
                                             </button>
                                         </div>
@@ -107,9 +107,8 @@
                 </tbody>
             </table>
 
-
-            <div th:each="tarefa: ${tarefas}">
-                <div  class="modal fade" th:attr="id = 'modal'+${tarefa.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <c:forEach items="${lista}" var="tarefa">
+                <div  class="modal fade" th:attr="id = 'modal${tarefa.id}' tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                       aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <!--Content-->
@@ -152,7 +151,7 @@
                         <!--/.Content-->
                     </div>
                 </div>
-            </div>
+            </c:forEach>
             <div th:each="tarefa: ${tarefas}">
                 <div class="modal fade" th:attr="id = 'modalConcluir'+${tarefa.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
