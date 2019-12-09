@@ -30,7 +30,7 @@
             </div>
         </c:if>  
         <c:if test = "${result == 'Tarefa atualizada'}">
-            <div th:if="${result == 'Tarefa atualizada'}" class='alert alert-success'>Tarefa atualizada com sucesso
+            <div class='alert alert-success'>Tarefa atualizada com sucesso
             </div>
         </c:if>
         <c:if test = "${result == 'Tarefa concluída'}">
@@ -137,7 +137,7 @@
                                             <input name="datafim"  value="${tarefa.datafim}"  title="Fim Tarefa" type="date" class="form-control" id="datafim" placeholder="Fim da Tarefa" value="" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <textarea name="descricao" value="${tarefa.descricao}"  th:text="*{descricao}" title="Descrição" type="text" class="form-control" id="descricao" placeholder="Descrição da tarefa" value="" maxlength ="200" required></textarea>
+                                            <textarea name="descricao" title="Descrição" type="text" class="form-control" id="descricao" placeholder="Descrição da tarefa" value="" maxlength ="200" required>${tarefa.descricao}</textarea>
                                         </div>
                                         <input name="id"  value="${tarefa.id}" type="hidden" id="id">
                                         <input name="status"  value="${tarefa.status}" type="hidden" id="status">
@@ -212,7 +212,7 @@
                     </div>
                 </div>
             </c:forEach>
-            
+
             <div class='col-md-12'>
                 <div class='row'>
                     <div class='col-md-5'>
