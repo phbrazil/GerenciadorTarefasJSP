@@ -95,7 +95,7 @@
                                     </c:if>
                                     <c:if test = "${tarefa.status != 'Finalizada'}">
                                         <div class='mb-2'>
-                                            <button type="button" class="btn mb-1 btn-success text-white" data-toggle="modal" th:attr="data-target = '#modalConcluir'+${tarefa.id}">
+                                            <button type="button" class="btn mb-1 btn-success text-white" data-toggle="modal" data-target = '#modalConcluir${tarefa.id}'>
                                                 Concluir
                                             </button>
                                         </div>
@@ -128,20 +128,20 @@
                                             <input name="responsavel" value="${tarefa.responsavel}" title="Nome do Responsável" type="text" class="form-control" id="responsavel" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <input name="nome"value="${tarefa.nome}"  title="Nome da Tarefa" type="text" class="form-control" id="artista" placeholder="Nome da Tarefa" value="" maxlength ="70" required>
+                                            <input name="nome" value="${tarefa.nome}"  title="Nome da Tarefa" type="text" class="form-control" id="artista" placeholder="Nome da Tarefa" value="" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <input name="datainicio"  th:value="*{datainicio}"  title="Inicio Tarefa" type="date" class="form-control" id="datainicio" placeholder="Ano da Tarefa" value="" maxlength ="70" required>
+                                            <input name="datainicio"  value="${tarefa.datainicio}"  title="Inicio Tarefa" type="date" class="form-control" id="datainicio" placeholder="Ano da Tarefa" value="" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <input name="datafim"  th:value="*{datafim}"  title="Fim Tarefa" type="date" class="form-control" id="datafim" placeholder="Fim da Tarefa" value="" maxlength ="70" required>
+                                            <input name="datafim"  value="${tarefa.datafim}"  title="Fim Tarefa" type="date" class="form-control" id="datafim" placeholder="Fim da Tarefa" value="" maxlength ="70" required>
                                         </div>
                                         <div class='col-md-5 mb-2'>
-                                            <textarea name="descricao"  th:value="*{descricao}"  th:text="*{descricao}" title="Descrição" type="text" class="form-control" id="descricao" placeholder="Descrição da tarefa" value="" maxlength ="200" required></textarea>
+                                            <textarea name="descricao" value="${tarefa.descricao}"  th:text="*{descricao}" title="Descrição" type="text" class="form-control" id="descricao" placeholder="Descrição da tarefa" value="" maxlength ="200" required></textarea>
                                         </div>
-                                        <input name="id"  th:value="*{id}" type="hidden" id="id">
-                                        <input name="status"  th:value="*{status}" type="hidden" id="status">
-                                        <input name="nota"  th:value="*{nota}" type="hidden" id="nota">
+                                        <input name="id"  value="${tarefa.id}" type="hidden" id="id">
+                                        <input name="status"  value="${tarefa.status}" type="hidden" id="status">
+                                        <input name="nota"  value="${tarefa.nota}" type="hidden" id="nota">
 
                                         <p><input type="submit" value="Atualizar" class='btn btn-success' />
                                     </div>
@@ -152,8 +152,8 @@
                     </div>
                 </div>
             </c:forEach>
-            <div th:each="tarefa: ${tarefas}">
-                <div class="modal fade" th:attr="id = 'modalConcluir'+${tarefa.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            <c:forEach items="${lista}" var="tarefa">
+                <div class="modal fade" id = 'modalConcluir${tarefa.id}' tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-md" role="document">
                         <!--Content-->
@@ -167,7 +167,7 @@
                             </div>
                             <!--Body-->
                             <div class="modal-body mb-0">
-                                <form action="#" th:action="@{/concluirTarefa}" th:object="${tarefa}" method="post">
+                                <form action="concluirTarefa" method="post">
                                     <div class='col-md-12'>
                                         <div class='row'>
                                             <div class='col-md-4'>
@@ -175,7 +175,7 @@
                                             </div>
                                             <div class="col-md-4 order-md-1">
                                                 <label for="form-autocomplete-1" class="active text-muted"><strong>Selecione a nota</strong></label>
-                                                <select th:field="*{nota}"  data-toggle="tooltip" autofocus title="" type="text" autocomplete="off" class="input-group form-control" required='true' data-width="auto" data-live-search="true" data-size="5" id="nota" name="nota" maxlength="70">
+                                                <select  data-toggle="tooltip" autofocus title="" type="text" autocomplete="off" class="input-group form-control" required='true' data-width="auto" data-live-search="true" data-size="5" id="nota" name="nota" maxlength="70">
                                                     <option value='1'>1</option>
                                                     <option value='2'>2</option>
                                                     <option value='3'>3</option>
@@ -188,7 +188,7 @@
                                                     <option value='10'>10</option>
                                                 </select>
                                             </div>
-                                            <input name="id"  th:value="*{id}" type="hidden" id="id">
+                                            <input name="id" value="${tarefa.id}" type="hidden" id="id">
                                         </div>
                                     </div>
                                     <div class='col-md-7 mt-2'>
@@ -211,8 +211,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </c:forEach>
+            
             <div class='col-md-12'>
                 <div class='row'>
                     <div class='col-md-5'>
