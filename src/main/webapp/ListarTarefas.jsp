@@ -72,8 +72,8 @@
                                     </c:if>
                                     <c:if test = "${tarefa.status == 'Não iniciada'}">
                                         <div class='mb-2'>
-                                            <form th:action="@{/iniciarTarefa}"  th:object="${tarefa}" method="post">
-                                                <input type="hidden" name="id" th:value="${tarefa.id}" />
+                                            <form action="iniciarTarefa"  method="post">
+                                                <input type="hidden" name="id" value="${tarefa.id}" />
                                                 <input type="submit" value="Iniciar" class="btn btn-success" />
                                             </form>
                                         </div>
