@@ -8,12 +8,8 @@ package gerenciarTarefas.dao;
 import gerenciarTarefas.model.tarefa;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class AddTarefaDAO {
-
-    private Connection conexao = null;
 
     public void gravarTarefa(tarefa tarefa) {
 

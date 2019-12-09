@@ -72,12 +72,14 @@
                                             <input type="submit" value="Iniciar" class="btn btn-success" />
                                         </form>
                                     </div>
-                                    <div th:if="${tarefa.status != 'Finalizada'}" class='mb-2'>
-                                        <form th:action="@{/deleteTarefa}"  th:object="${tarefa}" method="post">
-                                            <input type="hidden" name="id" th:value="${tarefa.id}" />
-                                            <input onclick="return confirm('Quer mesmo deletar?');" type="submit" value="Delete" class="btn btn-danger" />
-                                        </form>
-                                    </div>
+                                    <c:if test = "${tarefa.status != 'Finalizada'}">
+                                        <div class='mb-2'>
+                                            <form action="/deleteTarefa" method="POST">
+                                                <input type="hidden" name="id" value="${tarefa.id}" />
+                                                <input onclick="return confirm('Quer mesmo deletar?');" type="submit" value="Delete" class="btn btn-danger" />
+                                            </form>
+                                        </div>
+                                    </c:if>
                                     <div th:if="${tarefa.status != 'Finalizada'}" class='mb-2'>
                                         <button type="button" class="btn mb-1 btn-info text-white" data-toggle="modal" th:attr="data-target = '#modal'+${tarefa.id}">
                                             Editar
