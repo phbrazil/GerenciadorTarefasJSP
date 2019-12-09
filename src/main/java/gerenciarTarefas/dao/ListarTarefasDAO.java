@@ -10,7 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class listarTarefas {
+public class ListarTarefasDAO {
 
     private Connection conexao = null;
 
@@ -32,6 +32,13 @@ public class listarTarefas {
             ResultSet resultgeral = st.executeQuery(selectgeral);
             
             while(resultgeral.next()){
+                
+                tarefa tarefa = new tarefa();
+                
+                tarefa.setId(resultgeral.getInt("id"));
+                tarefa.setNome(resultgeral.getString("nome"));
+                
+                lista.add(tarefa);
                 
             }
 

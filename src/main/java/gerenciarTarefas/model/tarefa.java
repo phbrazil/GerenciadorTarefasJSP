@@ -5,10 +5,6 @@
  */
 package gerenciarTarefas.model;
 
-/**
- *
- * @author paulo.bezerra
- */
 public class tarefa {
     
     private int id;
@@ -20,7 +16,7 @@ public class tarefa {
     private String datafim;
     private int nota;
     
-    private tarefa(){
+    public tarefa(){
         
     }
 
