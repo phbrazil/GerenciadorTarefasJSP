@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.senac.tads.pi3b.petmaster</groupId>
-    <artifactId>PetMasterMaven</artifactId>
+    <artifactId>GerenciadorTarefasJSP</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>PetMaster</name>
+    <name>GerenciadorTarefasJSP</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

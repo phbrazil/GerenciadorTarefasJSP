@@ -2,6 +2,10 @@ DROP DATABASE petmaster;
 CREATE DATABASE petmaster;
 USE petmaster;
 
+CREATE USER 'senac'@'localhost' IDENTIFIED BY 'senac';
+GRANT ALL PRIVILEGES ON * . * TO 'senac'@'localhost';
+ALTER USER 'senac'@'localhost' IDENTIFIED WITH mysql_native_password BY 'senac';
+
 -- Gerenciamento de filiais (
 
 CREATE TABLE lojas (

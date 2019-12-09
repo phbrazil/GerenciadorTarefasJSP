@@ -1,59 +1,49 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Welcome to Pet Master</title>
+        <title>Gerenciador Tarefas</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-        <!-- Custom styles for this template -->
-        <link href="css/signin.css" rel="stylesheet">
     </head>
+    <body class='mb-2'>
+        <div align='center' class='col-mt-4'>
+            <h1 class='text-muted mt-4'>Tarefas</h1>
+            <form action="addTarefa" method="post">
+                <div class='col-md-5 mb-2'>
+                    <input name="responsavel" title="Nome do Responsável" type="text" class="form-control" id="responsavel" placeholder="Nome do Responsável" value="" maxlength ="70" required>
+                </div>
+                <div class='col-md-5 mb-2'>
+                    <input name="nome" title="Nome da Tarefa" type="text" class="form-control" id="artista" placeholder="Nome da Tarefa" value="" maxlength ="70" required>
+                </div>
+                <div class='col-md-5 mb-2'>
+                    <select name = "status" class="custom-select d-block w-100" id="status"  required>
+                        <option value='Não iniciada'>Não iniciada</option>
+                        <option value='Em andamento'>Em andamento</option>
+                        <option value='Concluída'>Concluída</option>
+                    </select>
+                </div>
+                <div class='col-md-5 mb-2'>
+                    <input name="datainicio" title="Inicio Tarefa" type="date" class="form-control" id="datainicio" placeholder="Ano da Tarefa" value="" maxlength ="70" required>
+                </div>
+                <div class='col-md-5 mb-2'>
+                    <input name="datafim" title="Fim Tarefa" type="date" class="form-control" id="datafim" placeholder="Fim da Tarefa" value="" maxlength ="70" required>
+                </div>
+                <div class='col-md-5 mb-2'>
+                    <textarea name="descricao" title="Descrição" type="text" class="form-control" id="descricao" placeholder="Descrição da tarefa" value="" maxlength ="200" required></textarea>
+                </div>
+                <p><input type="submit" value="Enviar" class='btn btn-success' />
+                    <input type="reset" value="Limpar"  class='btn btn-danger'/></p>
+                <input name="nota" value="${tarefa.nota}" value="0" type="hidden" id="nota">
+            </form>
+            <a href="/listarTarefas" style='text-decoration: none'>Ver Tarefas</a>
 
-    <body class="text-center" background="img/PlanodefuntoPetMaster.png" style="background-color: white;">
-        <form class="form-signin" action="Home"  method="POST">
-
-
-            <img class="mb-4" src="img/LogoPetMaster.png" alt="logo PetMaster" width="200" height="200">
-            <h1 class="h3 mb-3 font-weight-normal">Efetuar Login</h1>
-            <label for="inputEmail" class="sr-only">Email</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name = "username" required autofocus>
-            <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name = "password" required>
-            <label>
-                <a href ="Reset.jsp">Esqueci a senha</a>
-            </label>
-            <button class="btn btn-lg btn-secondary btn-block" type="submit">Entrar</button>
-            <p class="mt-5 mb-3 text-muted">&copy; Javazeiros - Projeto Semestre 3 </p>
-        </form>
+        </div>
     </body>
-    
-        <script>
-            
-            var mensagem = "${mensagem}"
-            
-            if(mensagem =="Sessão Expirada"){
-                alert(mensagem)
-            }
-
-
-        var loginfailed = "${loginfailed}"
-
-
-
-        if (loginfailed == "Usuário ou senha incorreto!") {
-            
-        alert(loginfailed)
-
-        } 
-
-
-
-    </script>
     
 </html>
