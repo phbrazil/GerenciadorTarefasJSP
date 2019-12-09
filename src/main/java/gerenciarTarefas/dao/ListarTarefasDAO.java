@@ -16,7 +16,7 @@ public class ListarTarefasDAO {
 
     public ArrayList<tarefa> Tarefas() {
         
-        ArrayList<tarefa> lista = null;
+        ArrayList<tarefa> lista = new ArrayList<>();
 
         String selectgeral = "";
 
@@ -28,15 +28,21 @@ public class ListarTarefasDAO {
             conexao = bancoconexao.getConnection();
 
             java.sql.Statement st = conexao.createStatement();
-            selectgeral = "select * from tarefas;";
+            selectgeral = "select * from tarefa;";
             ResultSet resultgeral = st.executeQuery(selectgeral);
             
             while(resultgeral.next()){
-                
+                                
                 tarefa tarefa = new tarefa();
                 
                 tarefa.setId(resultgeral.getInt("id"));
                 tarefa.setNome(resultgeral.getString("nome"));
+                tarefa.setDescricao(resultgeral.getString("descricao"));
+                tarefa.setStatus(resultgeral.getString("status"));
+                tarefa.setResponsavel(resultgeral.getString("responsavel"));
+                tarefa.setDatainicio(resultgeral.getString("datainicio"));
+                tarefa.setDatafim(resultgeral.getString("datafim"));
+                tarefa.setNota(resultgeral.getInt("nota"));
                 
                 lista.add(tarefa);
                 
@@ -47,7 +53,7 @@ public class ListarTarefasDAO {
 
         } catch (Exception e) {
 
-            System.out.println("erro" + e.getMessage());
+            System.out.println("erro " + e.getMessage());
 
         }
         return lista;

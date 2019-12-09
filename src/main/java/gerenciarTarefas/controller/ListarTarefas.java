@@ -21,13 +21,13 @@ public class ListarTarefas extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.setCharacterEncoding("UTF-8");
 
         ListarTarefasDAO listar = new ListarTarefasDAO();
 
         ArrayList<tarefa> lista = listar.Tarefas();
-
+        
         request.setAttribute("lista", lista);
 
         request.getRequestDispatcher("ListarTarefas.jsp").forward(request, response);

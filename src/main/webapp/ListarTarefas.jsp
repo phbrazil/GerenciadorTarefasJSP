@@ -54,13 +54,13 @@
                 <tbody>
                     <c:forEach items="${lista}" var="tarefa">
                         <tr>
-                            <td th:text="${tarefa.id}" />
-                            <td th:text="${tarefa.nome}" />
-                            <td th:text="${tarefa.descricao}" />
-                            <td th:text="${tarefa.status}" />
-                            <td th:text="${tarefa.responsavel}" />
-                            <td th:text="${tarefa.datainicio}" />
-                            <td th:text="${tarefa.datafim}" />
+                            <td>${tarefa.id}</td>
+                            <td>${tarefa.nome}</td>
+                            <td>${tarefa.descricao}</td>
+                            <td>${tarefa.status}</td>
+                            <td>${tarefa.responsavel}</td>
+                            <td>${tarefa.datainicio}</td>
+                            <td>${tarefa.datafim}</td>
                             <td align='center'>
                                 <div class="row">
                                     <div th:if="${tarefa.status == 'Finalizada'}" class='mb-2'>
@@ -205,7 +205,7 @@
             <div class='col-md-12'>
                 <div class='row'>
                     <div class='col-md-5'>
-                        <a class='btn btn-lg btn-success mt-4' href="/index.jsp" style='text-decoration: none'>Adicionar nova Tarefa</a>
+                        <a class='btn btn-lg btn-success mt-4' href="index.jsp" style='text-decoration: none'>Adicionar nova Tarefa</a>
                     </div>
                 </div>
             </div>

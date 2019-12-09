@@ -41,7 +41,7 @@
                     <input type="reset" value="Limpar"  class='btn btn-danger'/></p>
                 <input name="nota" value="0" type="hidden" id="nota">
             </form>
-            <a href="/ListarTarefas" style='text-decoration: none'>Ver Tarefas</a>
+            <a href="ListarTarefas" style='text-decoration: none'>Ver Tarefas</a>
 
         </div>
     </body>
